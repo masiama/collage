@@ -23,8 +23,8 @@ const collage = (el, options) => {
 	const resizeRow = (obj, row) => {
 		const imageExtras = (settings.padding * (obj.length - 1)) + (obj.length * obj[0][3]);
 		const overPercent = (settings.contWidth - imageExtras) / (row - imageExtras);
-		let trackWidth = imageExtras;
 		const lastRow = row < settings.contWidth;
+		let trackWidth = imageExtras;
 		
 		for (var i = 0; i < obj.length; i++) {
 			const block = obj[i][0];
@@ -78,7 +78,7 @@ const collage = (el, options) => {
 		
 		elements.push([img, nw, nh, params.w, params.h]);
 		
-		row += nw + params['w'] + settings.padding;
+		row += nw + params.w + settings.padding;
 		
 		if (row > settings.contWidth && elements.length != 0) {
 			resizeRow(elements, row - settings.padding);
