@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Collage Vanilla JS</title>
+		<style>
+			html body {
+				margin: 0;
+				padding: 0;
+			}
+			.Collage {
+				padding: 10px;
+			}
+			.image {
+				opacity: 0;
+			}
+		</style>
+		<script src="collage.js"></script>
+		<script type="text/javascript">
+			let timer;
+			const init = _ => {
+				const removeWhitespace = el => Array.from(el.childNodes).map(n => n.nodeType == 3 && !/\S/.test(n.nodeValue) && n.remove());
+				removeWhitespace(document.querySelector('.Collage'));
+				collage(document.querySelector('.Collage'), { targetHeight: 200, partialLast: true });
+			}
+			
+			window.onresize = _ => {
+				Array.from(document.querySelectorAll('.Collage .image')).map(el => el.style.opacity = 0)
+				if (timer) clearTimeout(timer);
+				timer = setTimeout(init, 200);
+			}
+		</script>
+	</head>
+	<body onload="init()">
+		<section class="Collage">
+			<img class="image" src="http://placehold.it/350x150/69D2E7/ffffff">
+			<img class="image" src="http://placehold.it/320x180/A7DBD8/ffffff">
+			<img class="image" src="http://placehold.it/320x300/E0E4CC/ffffff">
+			<img class="image" src="http://placehold.it/472x500/F38630/ffffff">
+			<img class="image" src="http://placehold.it/540x360/FA6900/ffffff">
+			<img class="image" src="http://placehold.it/800x600/ECD078/ffffff">
+			<img class="image" src="http://placehold.it/400x120/D95B43/ffffff">
+			<img class="image" src="http://placehold.it/300x300/C02942/ffffff">
+			<img class="image" src="http://placehold.it/320x500/542437/ffffff">
+			<img class="image" src="http://placehold.it/450x300/53777A/ffffff">
+			<img class="image" src="images/ed-lea-dribbble-10.jpg">
+			<img class="image" src="images/ed-lea-dribbble-9.png">
+			<img class="image" src="images/ed-lea-dribbble-8.png">
+			<img class="image" src="images/ed-lea-dribbble-7.png">
+			<img class="image" src="images/ed-lea-dribbble-6.png">
+			<img class="image" src="images/ed-lea-dribbble-5.png">
+			<img class="image" src="images/ed-lea-dribbble-4.png">
+			<img class="image" src="images/ed-lea-dribbble-3.png">
+			<img class="image" src="images/ed-lea-dribbble-2.png">
+		</section>
+	</body>
+</html>
